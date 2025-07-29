@@ -5,17 +5,18 @@ const submitBtn = document.getElementById("submit");
 const existingBtn = document.getElementById("existing");
 const form = document.getElementById("login-form");
 
-// Show existing user button if credentials exist
+existingBtn.style.display = "none";
+
 window.addEventListener("DOMContentLoaded", () => {
   const savedUser = localStorage.getItem("username");
   const savedPass = localStorage.getItem("password");
 
-  if (savedUser && savedPass) {
+  if (savedUser !== null && savedPass !== null) {
     existingBtn.style.display = "block";
   }
 });
 
-// Handle form submission
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -37,7 +38,6 @@ form.addEventListener("submit", (e) => {
   form.reset();
 });
 
-// Handle existing user login
 existingBtn.addEventListener("click", () => {
   const savedUser = localStorage.getItem("username");
   if (savedUser) {
